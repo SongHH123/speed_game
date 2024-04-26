@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>동체 시력</title>
+    </head>
+    <body>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100..900&family=Orbit&family=Sunflower:wght@300&display=swap');
+            *{font-family: "Sunflower", sans-serif;
+                font-family: "Jua", sans-serif;
+                font-style: normal;
+                font-size: 100px;
+            }
+            body{
+                background-color: rgb(255, 253, 191);
+                overflow:hidden;
+                margin: 2em;
+                text-align: center;
+            }
+            #title{
+                margin-bottom: 20px;
+            }
+            img{
+                height: 100px;
+                width: auto;
+                position: fixed;
+                margin-top: 30px;
+            }
+            button{
+                background-color:white;
+                border: 10px rgb(255, 201, 39);
+                border-radius: 20px;
+                border-style: dashed solid;
+                width: 300px;
+            }
+            #start:hover{
+                background-color:rgb(72, 206, 0);
+                border-style: dashed solid;
+                color: white;
+            }
+            #stop:hover{
+                background-color:rgb(210, 24, 24);
+                border-style: dashed solid;
+                color: white;
+            }
+            #S{
+                font-size: 150px;
+                background: white;
+                border: 10px solid rgb(255, 201, 39);
+                border-radius: 10px;
+                margin:0px 1.5em 50px 1.5em;
+            }
+        </style>
+        <div id="title">
+            동체시력 test
+            <img src="./magomi_1.png">
+        </div>
+        <div>
+            <p id="S">0.00</p>
+        </div>
+            <button id="start" style="margin-right: 0.25em;" onclick="timer('start')">start</button>
+            <button id="stop" onclick="timer('stop');">stop</button>
+
+        <script>
+            var target = document.getElementById("S");
+            var i = 0;
+            function timer(a){
+                function num(){
+                    i+=1
+                    target.innerHTML = (i%1000)/100;
+                }
+
+                if(a == 'start'){
+                    i = 0;
+                    i = setInterval(num, 10);
+                }
+                else{
+                    clearInterval(i);
+                    var link="./동체_결과.html?"+((i%1000)/100).toFixed(2);
+                    location.href=link;
+                    location.open(link);             
+                }
+            }
+
+        </script>
+
+    </body>
+</html>
